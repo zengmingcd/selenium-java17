@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SSC Finance Monitor">
+    <test name="SSC Finance Monitor" verbose="9">
+<!--        <parameter name="configIndex" value="xxxxx"/>-->
+        <groups>
+            <run>
+                <include name="P0"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ssc_finance.test_cases.HomePageTest" />
+        </classes>
+    </test>
+</suite>
