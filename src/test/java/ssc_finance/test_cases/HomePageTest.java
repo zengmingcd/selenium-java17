@@ -13,7 +13,7 @@ public class HomePageTest {
     @Test (description = "Test Home Page",
             enabled = true,
             groups = {"P0"})
-    public void testHomePage() throws InterruptedException {
+    public void testHomePage() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new");
         WebDriver driver = new ChromeDriver(options);
@@ -22,6 +22,7 @@ public class HomePageTest {
 
         HomePage home_page = new HomePage(driver);
         Assert.assertEquals(home_page.getTitleInHead(), "Smart Solutions Capital", "Title incorrect");
+
         Assert.assertEquals(home_page.getSearchAreaSpan1(), "SMART SOLUTION CAPITAL", "Content incorrect in Search Area Span1");
         Assert.assertEquals(home_page.getSearchAreaSpan2(), "has a mortgage just for you", "Content incorrect in Search Area Span2");
         Assert.assertEquals(home_page.getSearchAreaSpan3(), "Check your application status", "Content incorrect in Search Area Span3");
