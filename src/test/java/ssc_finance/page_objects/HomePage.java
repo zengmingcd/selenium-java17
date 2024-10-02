@@ -10,22 +10,22 @@ public class HomePage {
 
     private static final String PRE_PATH = "//*[@id=\"root\"]/div/div/div[2]";
 
-    WebDriver driver;
-    WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
     public HomePage(WebDriver driver){
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
     }
 
     // locators for the element in the page
-    By title_in_head = By.xpath("/html/head/title");
+    private By title_in_head = By.xpath("/html/head/title");
 
-    By search_area_span1 = By.xpath(PRE_PATH + "/div[1]/div/p[1]/span[1]");
-    By search_area_span2 = By.xpath(PRE_PATH + "/div[1]/div/p[1]/span[2]");
-    By search_area_span3 = By.xpath(PRE_PATH + "/div[1]/div/p[2]/span");
-    By search_area_search_input = By.xpath(PRE_PATH + "/div[1]/div/div/div/input");
-    By search_area_search_btn = By.xpath(PRE_PATH + "/div[1]/div/div/button");
-    By search_area_search_btn_span = By.xpath(PRE_PATH + "/div[1]/div/div/button/span");
+    private By search_area_span1 = By.xpath(PRE_PATH + "/div[1]/div/p[1]/span[1]");
+    private By search_area_span2 = By.xpath(PRE_PATH + "/div[1]/div/p[1]/span[2]");
+    private By search_area_span3 = By.xpath(PRE_PATH + "/div[1]/div/p[2]/span");
+    private By search_area_search_input = By.xpath(PRE_PATH + "/div[1]/div/div/div/input");
+    private By search_area_search_btn = By.xpath(PRE_PATH + "/div[1]/div/div/button");
+    private By search_area_search_btn_span = By.xpath(PRE_PATH + "/div[1]/div/div/button/span");
 
     public String getTitleInHead(){
         return this.driver.findElement(title_in_head).getAttribute("textContent");
