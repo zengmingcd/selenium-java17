@@ -13,9 +13,9 @@ public class HomePageTest {
     )
     public void testHomePage(){
         DriverManager myDM = new DriverManager("https://zzsuitablehome.ca/");
-        WebDriver dirver = myDM.getDriver();
+        WebDriver driver = myDM.getDriver();
 
-        HomePage homePage = new HomePage(dirver);
+        HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.getTitleInHead(), "Homepage", "Content incorrect in Title in Head.");
         Assert.assertEquals(homePage.getShareExpBtnText(), "Share My Experiences!", "Content incorrect in Share Exp Button.");
         Assert.assertEquals(homePage.getSearchAreaTitle(), "Get To Know Your Home", "Content incorrect in Search Area Title.");

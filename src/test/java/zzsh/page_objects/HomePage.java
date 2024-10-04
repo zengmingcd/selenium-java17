@@ -1,45 +1,32 @@
 package zzsh.page_objects;
 
-import org.openqa.selenium.By;
+import ca.zzsh.selenium.framework.simple_page.BasePage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+import ca.zzsh.selenium.framework.simple_page.BaseElement.LOCATOR_TYPE;
 
-public class HomePage {
-
+public class HomePage extends BasePage {
     private static final String PRE_PATH = "/html/body/main/div/div[1]";
 
-    private WebDriver driver;
-    private WebDriverWait wait;
     public HomePage(WebDriver driver){
-        this.driver = driver;
-        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+        super(driver);
     }
 
-    private By title_in_head = By.xpath("/html/head/title");
+    private String title_in_head = "/html/head/title";
     public String getTitleInHead(){
-        return this.driver.findElement(title_in_head).getAttribute("textContent");
+        return getAttribute(this.title_in_head, LOCATOR_TYPE.XPATH, "textContent", false);
     }
 
-    private By share_exp_btn = By.xpath(PRE_PATH + "/div[1]/a");
+    private String share_exp_btn = PRE_PATH + "/div[1]/a";
     public String getShareExpBtnText(){
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(this.share_exp_btn));
-        return this.driver.findElement(this.share_exp_btn).getText();
+        return getText(this.share_exp_btn, LOCATOR_TYPE.XPATH);
     }
-
     public void clickShareExpBtn(){
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(this.share_exp_btn));
-        this.driver.findElement(this.share_exp_btn).click();
+        click(this.share_exp_btn, LOCATOR_TYPE.XPATH);
     }
 
-    private By search_area_title = By.xpath(PRE_PATH + "/h2");
+    private String search_area_title = PRE_PATH + "/h2";
     public String getSearchAreaTitle(){
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(this.search_area_title));
-        return this.driver.findElement(this.search_area_title).getText();
+        return getText(this.search_area_title, LOCATOR_TYPE.XPATH);
     }
-
-
-
 }

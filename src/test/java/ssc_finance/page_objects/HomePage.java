@@ -1,55 +1,50 @@
 package ssc_finance.page_objects;
 
+import ca.zzsh.selenium.framework.simple_page.BaseElement.LOCATOR_TYPE;
+import ca.zzsh.selenium.framework.simple_page.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-public class HomePage {
-
+public class HomePage extends BasePage {
     private static final String PRE_PATH = "//*[@id=\"root\"]/div/div/div[2]";
 
-    private WebDriver driver;
-    private WebDriverWait wait;
     public HomePage(WebDriver driver){
-        this.driver = driver;
-        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+        super(driver);
     }
 
     // locators for the element in the page
-    private By title_in_head = By.xpath("/html/head/title");
-
-    private By search_area_span1 = By.xpath(PRE_PATH + "/div[1]/div/p[1]/span[1]");
-    private By search_area_span2 = By.xpath(PRE_PATH + "/div[1]/div/p[1]/span[2]");
-    private By search_area_span3 = By.xpath(PRE_PATH + "/div[1]/div/p[2]/span");
-    private By search_area_search_input = By.xpath(PRE_PATH + "/div[1]/div/div/div/input");
-    private By search_area_search_btn = By.xpath(PRE_PATH + "/div[1]/div/div/button");
-    private By search_area_search_btn_span = By.xpath(PRE_PATH + "/div[1]/div/div/button/span");
-
+    private String title_in_head = "/html/head/title";
     public String getTitleInHead(){
-        return this.driver.findElement(title_in_head).getAttribute("textContent");
-    }
-    public String getSearchAreaSpan1(){
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(search_area_span1));
-        return this.driver.findElement(search_area_span1).getText();
-    }
-    public String getSearchAreaSpan2(){
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(search_area_span2));
-        return this.driver.findElement(search_area_span2).getText();
-    }
-    public String getSearchAreaSpan3(){
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(search_area_span3));
-        return this.driver.findElement(search_area_span3).getText();
-    }
-    public String getSearchInputPlaceHolderContent(){
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(search_area_search_input));
-        return this.driver.findElement(search_area_search_input).getAttribute("placeholder");
-    }
-    public String getSearchBtnContent(){
-        this.wait.until(ExpectedConditions.visibilityOfElementLocated(search_area_search_btn));
-        return this.driver.findElement(search_area_search_btn_span).getText();
+        return getAttribute(this.title_in_head, LOCATOR_TYPE.XPATH,"textContent", false);
     }
 
+    private String search_area_span1 = PRE_PATH + "/div[1]/div/p[1]/span[1]";
+    public String getSearchAreaSpan1(){
+        return getText(this.search_area_span1, LOCATOR_TYPE.XPATH);
+    }
+
+    private String search_area_span2 = PRE_PATH + "/div[1]/div/p[1]/span[2]";
+    public String getSearchAreaSpan2(){
+        return getText(this.search_area_span2, LOCATOR_TYPE.XPATH);
+    }
+
+    private String search_area_span3 = PRE_PATH + "/div[1]/div/p[2]/span";
+    public String getSearchAreaSpan3(){
+        return getText(this.search_area_span3, LOCATOR_TYPE.XPATH);
+    }
+
+    private String search_area_search_input = PRE_PATH + "/div[1]/div/div/div/input";
+    public String getSearchInputPlaceHolderContent(){
+        return getAttribute(this.search_area_search_input, LOCATOR_TYPE.XPATH, "placeholder", true);
+    }
+    private String search_area_search_btn = PRE_PATH + "/div[1]/div/div/button";
+
+    private String search_area_search_btn_span = PRE_PATH + "/div[1]/div/div/button/span";
+    public String getSearchBtnContent(){
+        return getText(this.search_area_search_btn_span, LOCATOR_TYPE.XPATH);
+    }
 
 }
