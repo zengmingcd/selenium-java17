@@ -20,7 +20,7 @@ public class HomePageTest {
 //        driver.manage().window().fullscreen();
 
         HomePage home_page = new HomePage(driver);
-        Assert.assertEquals(home_page.getTitleInHead(), "Smart Solutions Capital", "Title incorrect");
+        Assert.assertEquals(home_page.getTitleInHead(), "Smart Solutions Capital | 聪达资本 | SSC | ssc", "Title incorrect");
 
         Assert.assertEquals(home_page.getSearchAreaSpan1(), "SMART SOLUTION CAPITAL", "Content incorrect in Search Area Span1");
         Assert.assertEquals(home_page.getSearchAreaSpan2(), "has a mortgage just for you", "Content incorrect in Search Area Span2");
